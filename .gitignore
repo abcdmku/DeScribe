@@ -140,3 +140,4 @@ vite.config.ts.timestamp-*
 
 .prompt
 backend/vector_db/
+data

@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  describe:
+    build: .
+    container_name: describe
+    volumes:
+      # Persist data outside container
+      - ./data:/app/data
+      # Mount .env for API keys
+      - ./backend/.env:/app/backend/.env:ro
+    environment:
+      - NODE_ENV=production
+    stdin_open: true
+    tty: true
+
+  # Development service with hot reload
+  describe-dev:
+    build: .
+    container_name: describe-dev
+    volumes:
+      - ./data:/app/data
+      - ./backend/.env:/app/backend/.env:ro
+      # Mount source for development
+      - ./backend/src:/app/backend/src:ro
+      - ./packages/shared/src:/app/packages/shared/src:ro
+    environment:
+      - NODE_ENV=development
+    stdin_open: true
+    tty: true
+    profiles:
+      - dev

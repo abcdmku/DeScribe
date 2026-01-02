@@ -1,6 +1,7 @@
 {
   "name": "describe-monorepo",
   "private": true,
+  "type": "module",
   "packageManager": "pnpm@9.12.3",
   "workspaces": [
     "frontend",
@@ -8,8 +9,15 @@
     "packages/*"
   ],
   "scripts": {
+    "setup": "node scripts/setup.js",
     "dev:frontend": "pnpm --filter frontend dev",
     "dev:backend": "pnpm --filter backend dev",
-    "build": "pnpm -r --if-present build"
+    "build": "pnpm -r --if-present build",
+    "ingest": "pnpm --filter backend ingest",
+    "query": "pnpm --filter backend query",
+    "docker:build": "docker-compose build",
+    "docker:ingest": "docker-compose run --rm describe pnpm --filter backend ingest",
+    "docker:query": "docker-compose run --rm describe pnpm --filter backend query",
+    "docker:shell": "docker-compose run --rm describe bash"
   }
 }

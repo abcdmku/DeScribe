@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm --filter backend add:*)",
+      "Bash(npx tsc:*)",
+      "Bash(cat:*)",
+      "Bash(pnpm --filter backend ingest:*)",
+      "Bash(npx tsx:*)",
+      "Bash(node -e:*)",
+      "Bash(where yt-dlp:*)"
+    ]
+  }
+}
